@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ambitious Chickens | Premium Poultry Supply</title>
+    
+    <!-- Importing Modern Typography via Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* Modern Design System & Reset */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        /* Font Assignment */
+        body { 
+            font-family: 'Inter', system-ui, -apple-system, sans-serif; 
+            color: #2d3748; 
+            background-color: #ffffff; 
+            line-height: 1.6; 
+            padding-bottom: 60px; 
+        }
+        
+        h1, h2, h3, h4, .logo-text {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        
+        /* Modern White Navigation Bar with Bold Red Accents */
+        nav { background: #ffffff; padding: 0.6rem 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 12px rgba(0,0,0,0.04); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #f3f4f6; }
+        
+        /* Modern Brand Layout */
+        .brand-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+        
+        /* Modernized SVG Logo Container styling */
+        .brand-logo svg { width: 46px; height: 46px; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .brand-logo:hover svg { transform: scale(1.08) rotate(3deg); }
+        
+        .logo-text { font-size: 1.5rem; font-weight: 800; color: #1a202c; letter-spacing: -0.7px; }
+        .logo-text span { color: #e53e3e; } /* Primary Red Accent */
+
+        .nav-links { display: flex; align-items: center; }
+        .nav-links a { margin-left: 28px; text-decoration: none; color: #4a5568; font-weight: 600; font-size: 0.95rem; transition: color 0.2s; position: relative; }
+        .nav-links a:after { content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0; background-color: #e53e3e; transition: width 0.2s; }
+        .nav-links a:hover { color: #1a202c; }
+        .nav-links a:hover:after { width: 100%; }
+        
+        /* Bold Red Hero Section */
+        .hero { background: linear-gradient(rgba(179, 39, 39, 0.8), rgba(229, 62, 62, 0.95)), url('https://images.unsplash.com/photo-1587593810167-a84920ea0781?auto=format&fit=crop&w=1200&q=80') center/cover; height: 70vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white; padding: 0 24px; }
+        .hero h1 { font-size: 3.4rem; margin-bottom: 15px; font-weight: 800; letter-spacing: -1.5px; line-height: 1.1; }
+        .hero p { font-size: 1.25rem; margin-bottom: 35px; max-width: 650px; color: #fff5f5; font-weight: 400; }
+        .btn { background-color: white; color: #e53e3e; padding: 16px 36px; text-decoration: none; font-weight: 700; border-radius: 50px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); transition: all 0.2s; text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.9rem;}
+        .btn:hover { background-color: #f7fafc; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0,0,0,0.2); }
+
+        /* Clean White Highlights Section */
+        .highlights { padding: 5rem 5%; display: flex; justify-content: space-around; flex-wrap: wrap; background: #ffffff; gap: 40px; border-bottom: 1px solid #f3f4f6; }
+        .highlight-card { text-align: center; max-width: 300px; padding: 20px; border-radius: 12px; transition: background-color 0.2s; }
+        .highlight-card:hover { background-color: #fff5f5; }
+        .highlight-card h3 { color: #c53030; margin-bottom: 12px; font-size: 1.35rem; font-weight: 700; letter-spacing: -0.3px; }
+        .highlight-card p { color: #4a5568; font-size: 0.95rem; }
+
+        /* Clean Product Grid Section */
+        .catalog-container { padding: 6rem 5%; max-width: 1150px; margin: 0 auto; background-color: #fff; }
+        .catalog-container h2 { text-align: center; margin-bottom: 15px; font-size: 2.6rem; color: #1a202c; font-weight: 800; letter-spacing: -1px; }
+        .catalog-subtitle { text-align: center; color: #718096; margin-bottom: 50px; font-size: 1.1rem; }
+        
+        .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        @media (max-width: 768px) { .product-grid { grid-template-columns: 1fr; gap: 30px; } }
+        
+        .product-category { background: white; padding: 40px; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.04); border: 1px solid #f3f4f6; transition: transform 0.2s; }
+        .product-category:hover { transform: translateY(-3px); border-color: #fed7d7; }
+        .product-category h3 { font-size: 1.6rem; margin-bottom: 25px; color: #1a202c; display: flex; align-items: center; gap: 12px; border-bottom: 3px solid #feb2b2; padding-bottom: 12px; font-weight: 700; letter-spacing: -0.5px; }
+        
+        .menu-item { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 18px; }
+        .menu-item-name { font-weight: 600; color: #2d3748; font-size: 1.05rem; }
+        .menu-item-dots { flex-grow: 1; border-bottom: 2px dashed #e2e8f0; margin: 0 12px; position: relative; top: -4px; }
+        .menu-item-price { font-weight: 700; color: #e53e3e; font-size: 1.15rem; }
+        .menu-item-detail { font-size: 0.85rem; color: #718096; margin-top: -14px; margin-bottom: 14px; padding-right: 50px; }
+
+        /* Wholesale Notice */
+        .bulk-banner { background: #fff5f5; border-left: 5px solid #e53e3e; padding: 25px; border-radius: 12px; margin-top: 50px; }
+        .bulk-banner h4 { color: #c53030; margin-bottom: 8px; font-size: 1.25rem; font-weight: 700; }
+        .bulk-banner p { color: #822727; font-size: 0.95rem; }
+
+        /* Professional Red & White Footer */
+        footer { background-color: #c53030; color: white; padding: 5rem 5%; text-align: center; border-top: 10px solid #e53e3e; }
+        footer h2 { margin-bottom: 15px; color: #ffffff; font-size: 2.2rem; font-weight: 800; letter-spacing: -0.5px; }
+        footer p { margin-bottom: 12px; color: #fff5f5; font-size: 1rem;}
+        .footer-details { margin-top: 30px; display: flex; flex-direction: column; gap: 10px; font-size: 1.05rem; }
+        .footer-details span { color: #ffffff; font-weight: 600; }
+
+        /* ========================================== */
+        /* CHATBOT & WHATSAPP WIDGET SYSTEM           */
+        /* ========================================== */
+        .chat-widget-container { position: fixed; bottom: 25px; right: 25px; z-index: 1000; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+        
+        /* Action Launcher Buttons - Red Accent */
+        .widget-trigger { display: flex; align-items: center; gap: 10px; padding: 14px 24px; border-radius: 50px; font-weight: 700; color: white; border: none; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.15); transition: transform 0.2s, background-color 0.2s; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        .widget-trigger:hover { transform: scale(1.04); }
+        .trigger-wa { background-color: #25D366; text-decoration: none; }
+        .trigger-wa:hover { background-color: #128C7E; }
+        .trigger-chat { background-color: #e53e3e; }
+        .trigger-chat:hover { background-color: #c53030; }
+
+        /* Chat Window Panel */
+        .chat-window { width: 350px; height: 460px; background: white; border-radius: 16px; box-shadow: 0 10px 35px rgba(0,0,0,0.15); border: 1px solid #f3f4f6; display: none; flex-direction: column; overflow: hidden; animation: fadeInUp 0.3s ease-out; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .chat-header { background: #ffffff; color: #1a202c; padding: 18px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #fff5f5; }
+        .chat-header-title { display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: 1rem; color: #e53e3e; }
+        .chat-close-btn { background: none; border: none; color: #718096; font-size: 1.5rem; cursor: pointer; line-height: 1; }
+        .chat-close-btn:hover { color: #1a202c; }
+
+        .chat-body { flex-grow: 1; padding: 18px; overflow-y: auto; display: flex; flex-direction: column; gap: 14px; background: #ffffff; }
+        
+        /* Chat Bubbles */
+        .msg { max-width: 85%; padding: 12px 16px; border-radius: 16px; font-size: 0.9rem; line-height: 1.4; box-shadow: 0 1px 3px rgba(0,0,0,0.03); }
+        .msg.bot { background: #f7fafc; color: #2d3748; align-self: flex-start; border-bottom-left-radius: 4px; border: 1px solid #edf2f7; }
+        .msg.user { background: #e53e3e; color: white; align-self: flex-end; border-bottom-right-radius: 4px; font-weight: 500;}
+        
+        /* Interactive Option Buttons */
+        .chat-options-box { padding: 12px 18px 18px; background: #ffffff; border-top: 1px solid #f3f4f6; display: flex; flex-direction: column; gap: 8px; }
+        .opt-btn { background: #fff5f5; border: 1px solid #feb2b2; color: #c53030; padding: 10px 14px; border-radius: 8px; cursor: pointer; text-align: left; font-size: 0.85rem; font-weight: 600; transition: all 0.2s; }
+        .opt-btn:hover { background: #e53e3e; border-color: #e53e3e; color: #ffffff; }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="#" class="brand-logo">
+            <!-- BRAND NEW: Minimalist Geometric Ambitious Chickens Logo -->
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Pure White Circular Minimal Shield Base -->
+                <circle cx="50" cy="50" r="48" fill="#ffffff"/>
+                <circle cx="50" cy="50" r="44" fill="#fff5f5" stroke="#edf2f7" stroke-width="1"/>
+                
+                <!-- Modern Geometric Layers forming the Chicken Head & Comb Profile -->
+                <!-- The Comb (Ambitious upward modern triangles) -->
+                <path d="M42 24L50 15L54 26H42Z" fill="#c53030"/>
+                <path d="M51 21L58 13L63 24H51Z" fill="#e53e3e"/>
+                
+                <!-- Main Head & Neck Swoop (Abstract Geometric Arc) -->
+                <path d="M32 76C32 50 48 34 66 34C63 42 61 54 64 63C66 68 71 70 73 75C62 77 44 78 32 76Z" fill="#e53e3e"/>
+                
+                <!-- The Beak (Sharp, minimal accent) -->
+                <path d="M66 34L76 40L65 45V34Z" fill="#c53030"/>
+                
+                <!-- The Wing/Body accent line -->
+                <path d="M38 76C44 64 54 58 61 63" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+                
+                <!-- Clean Modern Eye Point -->
+                <circle cx="56" cy="43" r="3.5" fill="#ffffff"/>
+            </svg>
+            
+            <div class="logo-text">Ambitious<span>Chickens</span></div>
+        </a>
+        <div class="nav-links">
+            <a href="#about">Standards</a>
+            <a href="#pricing">Price List</a>
+            <a href="#contact">Order Now</a>
+        </div>
+    </nav>
+
+    <!-- Hero Header Section -->
+    <section class="hero">
+        <h1>Fresh Live & Dressed Poultry Supply</h1>
+        <p>Healthy live birds for farming or resale, and clean, expertly dressed poultry processed daily for kitchens, catering, and retail.</p>
+        <a href="https://wa.me/263770000000?text=Hi,%20I'd%20like%20to%20inquire%20about%20ordering%20chickens." class="btn" target="_blank">Order via WhatsApp</a>
+    </section>
+
+    <!-- Operational Highlights -->
+    <section class="highlights" id="about">
+        <div class="highlight-card">
+            <h3>Healthy Live Birds</h3>
+            <p>Vibrant, active, and fully vaccinated broilers/layers raised on optimal feeding schedules.</p>
+        </div>
+        <div class="highlight-card">
+            <h3>Hygienically Dressed</h3>
+            <p>Cleanly plucked, eviscerated, washed, and prepped under strict sanitary guidelines.</p>
+        </div>
+        <div class="highlight-card">
+            <h3>Flexible Order Sizes</h3>
+            <p>Whether you need 5 chickens for a weekend event or 50 birds for resale, we fulfill it flawlessly.</p>
+        </div>
+    </section>
+
+    <!-- Products / Price List Container -->
+    <section class="catalog-container" id="pricing">
+        <h2>Our Products & Pricing</h2>
+        <p class="catalog-subtitle">Select from our premium live stock or ready-to-cook dressed selections.</p>
+        
+        <div class="product-grid">
+            
+            <!-- Category 1: Live Stock -->
+            <div class="product-category">
+                <h3>🐓 Live Chickens</h3>
+                
+                <div class="menu-item">
+                    <span class="menu-item-name">Mature Broilers</span>
+                    <span class="menu-item-dots"></span>
+                    <span class="menu-item-price">$8.00</span>
+                </div>
+                <div class="menu-item-detail">Ready for consumption or market (Avg. 2.0kg - 2.5kg live weight)</div>
+
+                <div class="menu-item">
+                    <span class="menu-item-name">Point of Lay Layers</span>
+                    <span class="menu-item-dots"></span>
+                    <span class="menu-item-price">$9.00</span>
+                </div>
+                <div class="menu-item-detail">Healthy young hens close to their laying cycle</div>
+
+                <div class="menu-item">
+                    <span class="menu-item-name">Off-Layer Culls</span>
+                    <span class="menu-item-dots"></span>
+                    <span class="menu-item-price">$4.50</span>
+                </div>
+                <div class="menu-item-detail">Budget-friendly, mature road-runner alternatives</div>
+            </div>
+
+            <!-- Category 2: Dressed / Processed -->
+            <div class="product-category">
+                <h3>🔪 Fresh Dressed Poultry</h3>
+                
+                <div class="menu-item">
+                    <span class="menu-item-name">Whole Dressed Chicken</span>
+                    <span class="menu-item-dots"></span>
+                    <span class="menu-item-price">$5.00</span>
+                </div>
+                <div class="menu-item-detail">Fully cleaned, packaged whole bird (per KG or fixed weight)</div>
+
+                <div class="menu-item">
+                    <span class="menu-item-name">Mixed Standard Portions</span>
+                    <span class="menu-item-dots"></span>
+                    <span class="menu-item-price">$5.50</span>
+                </div>
+                <div class="menu-item-detail">Convenient 2KG packs containing drumsticks, thighs, and wings</div>
+
+                <div class="menu-item">
+                    <span class="menu-item-name">Premium Boneless Breast</span>
+                    <span class="menu-item-dots"></span>
+                    <span class="menu-item-price">$7.00</span>
+                </div>
+                <div class="menu-item-detail">Skinless, perfectly filleted breast meat per KG</div>
+            </div>
+            
+        </div>
+
+        <!-- Bulk Discounts Alert Box -->
+        <div class="bulk-banner">
+            <h4>Looking for wholesale supply or resale batches?</h4>
+            <p>We offer discounted per-head rates and scheduled deliveries for restaurants, boarding schools, and independent poultry retailers ordering 50+ birds at a time. Contact us directly for a custom wholesale quote.</p>
+        </div>
+    </section>
+
+    <!-- Fulfillment Footer -->
+    <footer id="contact">
+        <h2>Place Your Order Today</h2>
+        <p>Get in touch to confirm current daily availability or schedule a farm gate collection.</p>
+        
+        <div class="footer-details">
+            <p><strong>📞 Call / WhatsApp:</strong> <span>+263778871692 |+263773383166</span></p>
+            <p><strong>📍 Supply Depot:</strong> <span>Bulawayo, Zimbabwe</span></p>
+            <p><strong>⏰ Collection Times:</strong> <span>Mon - Sat: 7:30 AM - 7:30 PM</span></p>
+        </div>
+    </footer>
+
+    <!-- Chatbot Widget UI -->
+    <div class="chat-widget-container">
+        
+        <!-- Chat Window -->
+        <div class="chat-window" id="personalChatWindow">
+            <div class="chat-header">
+                <div class="chat-header-title">🐣 Ambitious Assistant</div>
+                <button class="chat-close-btn" onclick="toggleChatWindow()">×</button>
+            </div>
+            <div class="chat-body" id="chatMsgArea">
+                <div class="msg bot">Hello! Welcome to Ambitious Chickens. How can I help you with your order today?</div>
+            </div>
+            <div class="chat-options-box">
+                <button class="opt-btn" onclick="handleBotQuery('pricing')">💰 Current prices?</button>
+                <button class="opt-btn" onclick="handleBotQuery('bulk')">📦 Wholesale discounts?</button>
+                <button class="opt-btn" onclick="handleBotQuery('order')">🔴 Place an order via WhatsApp</button>
+            </div>
+        </div>
+
+        <!-- Float Buttons -->
+        <button class="widget-trigger trigger-chat" id="openChatBtn" onclick="toggleChatWindow()">💬 Ask Assistant</button>
+        <a href="https://wa.me/263770000000?text=Hi!%20I%20visited%20the%20Ambitious%20Chickens%20website%20and%20want%20to%20place%20an%20order." class="widget-trigger trigger-wa" target="_blank">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="display:inline; margin-right:4px; vertical-align:text-bottom;">
+                <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.69-4.98c-.202-.101-1.194-.588-1.378-.653-.184-.066-.317-.099-.45.099-.132.199-.512.653-.628.788-.117.136-.232.151-.434.05-1.207-.604-1.922-1.004-2.674-2.298-.198-.34-.198-.588-.099-.688.088-.088.199-.232.299-.348.1-.117.133-.199.199-.332.066-.133.033-.25-.017-.35-.05-.101-.45-1.086-.617-1.488-.162-.395-.327-.341-.45-.347-.117-.006-.251-.007-.386-.007-.135 0-.354.05-.539.25-.185.2-.705.688-.705 1.681 0 1.003.729 1.974.831 2.108.102.135 1.433 2.187 3.473 3.064.485.208.863.332 1.159.426.488.155.931.133 1.282.08.39-.059 1.194-.488 1.365-.957.172-.469.172-.87.121-.957-.05-.088-.184-.138-.386-.239z"/>
+            </svg>
+            WhatsApp
+        </a>
+    </div>
+
+    <!-- Script Logic Engine -->
+    <script>
+        function toggleChatWindow() {
+            const chatWin = document.getElementById('personalChatWindow');
+            const openBtn = document.getElementById('openChatBtn');
+            
+            if(chatWin.style.display === 'flex') {
+                chatWin.style.display = 'none';
+                openBtn.style.display = 'block';
+            } else {
+                chatWin.style.display = 'flex';
+                openBtn.style.display = 'none';
+            }
+        }
+
+        function handleBotQuery(type) {
+            const msgArea = document.getElementById('chatMsgArea');
+            let userText = "";
+            let botText = "";
+
+            if(type === 'pricing') {
+                userText = "What are the current prices?";
+                botText = "Our live mature broilers are $8.00 and point-of-lay hens are $9.00. For dressed chicken, our whole birds are $5.00/KG and premium boneless breast is $7.00/KG.";
+            } else if(type === 'bulk') {
+                userText = "Do you offer bulk wholesale discounts?";
+                botText = "Yes, we do! For independent resellers, schools, and catering businesses ordering 50+ birds at a time, we offer massive per-head discounts. Click the WhatsApp option to get a custom quote!";
+            } else if(type === 'order') {
+                userText = "I want to place an order";
+                botText = "Perfect choice! The fastest way to order is on WhatsApp: <br><br><a href='https://wa.me/26377 8871 692?text=Hi!%20I%20want%20to%20place%20an%20order%20with%20Ambitious%20Chickens.' target='_blank' style='color:#e53e3e; font-weight:bold;'>👉 Launch WhatsApp Chat</a>";
+            }
+
+            const userMsgElement = document.createElement('div');
+            userMsgElement.className = 'msg user';
+            userMsgElement.innerHTML = userText;
+            msgArea.appendChild(userMsgElement);
+            msgArea.scrollTop = msgArea.scrollHeight;
+
+            setTimeout(() => {
+                const botMsgElement = document.createElement('div');
+                botMsgElement.className = 'msg bot';
+                botMsgElement.innerHTML = botText;
+                msgArea.appendChild(botMsgElement);
+                msgArea.scrollTop = msgArea.scrollHeight;
+            }, 400);
+        }
+    </script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ambitious Chickens | Premium Poultry Supply</title>
+    
+    <!-- Importing Modern Typography via Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* Modern Design System & Reset */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        /* Font Assignment */
+        body { 
+            font-family: 'Inter', system-ui, -apple-system, sans-serif; 
+            color: #2d3748; 
+            background-color: #ffffff; 
+            line-height: 1.6; 
+            padding-bottom: 60px; 
+        }
+        
+        h1, h2, h3, h4, .logo-text {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        
+        /* Modern White Navigation Bar with Bold Red Accents */
+        nav { background: #ffffff; padding: 0.6rem 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 12px rgba(0,0,0,0.04); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #f3f4f6; }
+        
+        /* Modern Brand Layout */
+        .brand-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+        
+        /* Modernized SVG Logo Container styling */
+        .brand-logo svg { width: 46px; height: 46px; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .brand-logo:hover svg { transform: scale(1.08) rotate(3deg); }
+        
+        .logo-text { font-size: 1.5rem; font-weight: 800; color: #1a202c; letter-spacing: -0.7px; }
+        .logo-text span { color: #e53e3e; } /* Primary Red Accent */
+
+        .nav-links { display: flex; align-items: center; }
+        .nav-links a { margin-left: 28px; text-decoration: none; color: #4a5568; font-weight: 600; font-size: 0.95rem; transition: color 0.2s; position: relative; }
+        .nav-links a:after { content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0; background-color: #e53e3e; transition: width 0.2s; }
+        .nav-links a:hover { color: #1a202c; }
+        .nav-links a:hover:after { width: 100%; }
+        
+        /* Bold Red Hero Section */
+        .hero { background: linear-gradient(rgba(179, 39, 39, 0.8), rgba(229, 62, 62, 0.95)), url('https://images.unsplash.com/photo-1587593810167-a84920ea0781?auto=format&fit=crop&w=1200&q=80') center/cover; height: 70vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white; padding: 0 24px; }
+        .hero h1 { font-size: 3.4rem; margin-bottom: 15px; font-weight: 800; letter-spacing: -1.5px; line-height: 1.1; }
+        .hero p { font-size: 1.25rem; margin-bottom: 35px; max-width: 650px; color: #fff5f5; font-weight: 400; }
+        .btn { background-color: white; color: #e53e3e; padding: 16px 36px; text-decoration: none; font-weight: 700; border-radius: 50px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); transition: all 0.2s; text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.9rem;}
+        .btn:hover { background-color: #f7fafc; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0,0,0,0.2); }
+
+        /* Clean White Highlights Section */
+        .highlights { padding: 5rem 5%; display: flex; justify-content: space-around; flex-wrap: wrap; background: #ffffff; gap: 40px; border-bottom: 1px solid #f3f4f6; }
+        .highlight-card { text-align: center; max-width: 300px; padding: 20px; border-radius: 12px; transition: background-color 0.2s; }
+        .highlight-card:hover { background-color: #fff5f5; }
+        .highlight-card h3 { color: #c53030; margin-bottom: 12px; font-size: 1.35rem; font-weight: 700; letter-spacing: -0.3px; }
+        .highlight-card p { color: #4a5568; font-size: 0.95rem; }
+
+        /* Clean Product Grid Section */
+        .catalog-container { padding: 6rem 5%; max-width: 1150px; margin: 0 auto; background-color: #fff; }
+        .catalog-container h2 { text-align: center; margin-bottom: 15px; font-size: 2.6rem; color: #1a202c; font-weight: 800; letter-spacing: -1px; }
+        .catalog-subtitle { text-align: center; color: #718096; margin-bottom: 50px; font-size: 1.1rem; }
+        
+        .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        @media (max-width: 768px) { .product-grid { grid-template-columns: 1fr; gap: 30px; } }
+        
+        .product-category { background: white; padding: 40px; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.04); border: 1px solid #f3f4f6; transition: transform 0.2s; }
+        .product-category:hover { transform: translateY(-3px); border-color: #fed7d7; }
+        .product-category h3 { font-size: 1.6rem; margin-bottom: 25px; color: #1a202c; display: flex; align-items: center; gap: 12px; border-bottom: 3px solid #feb2b2; padding-bottom: 12px; font-weight: 700; letter-spacing: -0.5px; }
+        
+        .menu-item { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 18px; }
+        .menu-item-name { font-weight: 600; color: #2d3748; font-size: 1.05rem; }
+        .menu-item-dots { flex-grow: 1; border-bottom: 2px dashed #e2e8f0; margin: 0 12px; position: relative; top: -4px; }
+        .menu-item-price { font-weight: 700; color: #e53e3e; font-size: 1.15rem; }
+        .menu-item-detail { font-size: 0.85rem; color: #718096; margin-top: -14px; margin-bottom: 14px; padding-right: 50px; }
+
+        /* Wholesale Notice */
+        .bulk-banner { background: #fff5f5; border-left: 5px solid #e53e3e; padding: 25px; border-radius: 12px; margin-top: 50px; }
+        .bulk-banner h4 { color: #c53030; margin-bottom: 8px; font-size: 1.25rem; font-weight: 700; }
+        .bulk-banner p { color: #822727; font-size: 0.95rem; }
+
+        /* Professional Red & White Footer */
+        footer { background-color: #c53030; color: white; padding: 5rem 5%; text-align: center; border-top: 10px solid #e53e3e; }
+        footer h2 { margin-bottom: 15px; color: #ffffff; font-size: 2.2rem; font-weight: 800; letter-spacing: -0.5px; }
+        footer p { margin-bottom: 12px; color: #fff5f5; font-size: 1rem;}
+        .footer-details { margin-top: 30px; display: flex; flex-direction: column; gap: 10px; font-size: 1.05rem; }
+        .footer-details span { color: #ffffff; font-weight: 600; }
+
+        /* ========================================== */
+        /* CHATBOT & WHATSAPP WIDGET SYSTEM           */
+        /* ========================================== */
+        .chat-widget-container { position: fixed; bottom: 25px; right: 25px; z-index: 1000; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+        
+        /* Action Launcher Buttons - Red Accent */
+        .widget-trigger { display: flex; align-items: center; gap: 10px; padding: 14px 24px; border-radius: 50px; font-weight: 700; color: white; border: none; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.15); transition: transform 0.2s, background-color 0.2s; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        .widget-trigger:hover { transform: scale(1.04); }
+        .trigger-wa { background-color: #25D366; text-decoration: none; }
+        .trigger-wa:hover { background-color: #128C7E; }
+        .trigger-chat { background-color: #e53e3e; }
+        .trigger-chat:hover { background-color: #c53030; }
+
+        /* Chat Window Panel */
+        .chat-window { width: 350px; height: 460px; background: white; border-radius: 16px; box-shadow: 0 10px 35px rgba(0,0,0,0.15); border: 1px solid #f3f4f6; display: none; flex-direction: column; overflow: hidden; animation: fadeInUp 0.3s ease-out; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .chat-header { background: #ffffff; color: #1a202c; padding: 18px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #fff5f5; }
+        .chat-header-title { display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: 1rem; color: #e53e3e; }
+        .chat-close-btn { background: none; border: none; color: #718096; font-size: 1.5rem; cursor: pointer; line-height: 1; }
+        .chat-close-btn:hover { color: #1a202c; }
+
+        .chat-body { flex-grow: 1; padding: 18px; overflow-y: auto; display: flex; flex-direction: column; gap: 14px; background: #ffffff; }
+        
+        /* Chat Bubbles */
+        .msg { max-width: 85%; padding: 12px 16px; border-radius: 16px; font-size: 0.9rem; line-height: 1.4; box-shadow: 0 1px 3px rgba(0,0,0,0.03); }
+        .msg.bot { background: #f7fafc; color: #2d3748; align-self: flex-start; border-bottom-left-radius: 4px; border: 1px solid #edf2f7; }
+        .msg.user { background: #e53e3e; color: white; align-self: flex-end; border-bottom-right-radius: 4px; font-weight: 500;}
+        
+        /* Interactive Option Buttons */
+        .chat-options-box { padding: 12px 18px 18px; background: #ffffff; border-top: 1px solid #f3f4f6; display: flex; flex-direction: column; gap: 8px; }
+        .opt-btn { background: #fff5f5; border: 1px solid #feb2b2; color: #c53030; padding: 10px 14px; border-radius: 8px; cursor: pointer; text-align: left; font-size: 0.85rem; font-weight: 600; transition: all 0.2s; }
+        .opt-btn:hover { background: #e53e3e; border-color: #e53e3e; color: #ffffff; }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="#" class="brand-logo">
+            <!-- Minimalist Geometric Ambitious Chickens Logo -->
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="48" fill="#ffffff"/>
+                <circle cx="50" cy="50" r="44" fill="#fff5f5" stroke="#edf2f7" stroke-width="1"/>
+                <path d="M42 24L50 15L54 26H42Z" fill="#c53030"/>
+                <path d="M51 21L58 13L63 24H51Z" fill="#e53e3e"/>
+                <path d="M32 76C32 50 48 34 66 34C63 42 61 54 64 63C66 68 71 70 73 75C62 77 44 78 32 76Z" fill="#e53e3e"/>
+                <path d="M66 34L76 40L65 45V34Z" fill="#c53030"/>
+                <path d="M38 76C44 64 54 58 61 63" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+                <circle cx="56" cy="43" r="3.5" fill="#ffffff"/>
+            </svg>
+            
+            <div class="logo-text">Ambitious<span>Chickens</span></div>
+        </a>
+        <div class="nav-links">
+            <a href="#about">Standards</a>
+            <a href="#pricing">Price List</a>
+            <a href="#contact">Order Now</a>
+        </div>
+    </nav>
+
+    <!-- Hero Header Section -->
+    <section class="hero">
+        <h1>Fresh Live & Dressed Poultry Supply</h1>
+        <p>Healthy live birds for farming or resale, and clean, expertly dressed poultry processed daily for kitchens, catering, and retail.</p>
+        <!-- Updated Hero Live WhatsApp Action Link -->
+        <a href="https://wa.me/263778871692?text=Hi%20Ambitious%20Chickens,%20I'd%20like%20to%20inquire%20about%20ordering%20poultry." class="btn" target="_blank">Order via WhatsApp</a>
+    </section>
+
+    <!-- Operational Highlights -->
+    <section class="highlights" id="about">
+        <div class="highlight-card">
+            <h3>Healthy Live Birds</h3>
+            <p>Vibrant, active, and fully vaccinated broilers/layers raised on optimal feeding schedules.</p>
+        </div>
+        <div class="highlight-card">
+            <h3>Hygienically Dressed</h3>
+            <p>Cleanly plucked, eviscerated, washed, and prepped under strict sanitary guidelines.</p>
+        </div>
+        <div class="highlight-card">
+            <h3>Flexible Order Sizes</h3>
+            <p>Whether you need 5 chickens for a weekend event or 200 birds for resale, we fulfill it flawlessly.</p>
+        </div>
+    </section>
+
+    <!-- Products / Price List Container -->
+    <section class="catalog-container" id="pricing">
+        <h2>Our Products & Pricing</h2>
+        <p class="catalog-subtitle">Select from our premium live stock or ready-to-cook dressed selections.</p>
+        
+        <div class="product-grid">
+            
+            <!-- Category 1: Live Stock -->
+            <div class="product-category">
+                <h3>🐓 Live Chickens</h3>
+                
+                <div class="menu-item">
+                    <span class="menu-item-name">Mature Broilers</span>
+                    <span class="menu-item-dots"></span>
+                    <span class="menu-item-price">$6.50</span>
+                </div>
+                <div class="menu-item-detail">Ready for consumption or market (Avg. 2.0kg - 2.5kg live weight)</div>
+
+                <div class="menu-item">
+                    <span class="menu-item-name">Point of Lay Layers</span>
+                    <span class="menu-item-dots"></span>
+                    <span class="menu-item-price">$9.00</span>
+                </div>
+                <div class="menu-item-detail">Healthy young hens close to their laying cycle</div>
+
+                <div class="menu-item">
+                    <span class="menu-item-name">Off-Layer Culls</span>
+                    <span class="menu-item-dots"></span>
+                    <span class="menu-item-price">$4.50</span>
+                </div>
+                <div class="menu-item-detail">Budget-friendly, mature road-runner alternatives</div>
+            </div>
+
+            <!-- Category 2: Dressed / Processed -->
+            <div class="product-category">
+                <h3>🔪 Fresh Dressed Poultry</h3>
+                
+                <div class="menu-item">
+                    <span class="menu-item-name">Whole Dressed Chicken</span>
+                    <span class="menu-item-dots"></span>
+                    <span class="menu-item-price">$5.00</span>
+                </div>
+                <div class="menu-item-detail">Fully cleaned, packaged whole bird (per KG or fixed weight)</div>
+
+                <div class="menu-item">
+                    <span class="menu-item-name">Mixed Standard Portions</span>
+                    <span class="menu-item-dots"></span>
+                    <span class="menu-item-price">$5.50</span>
+                </div>
+                <div class="menu-item-detail">Convenient 2KG packs containing drumsticks, thighs, and wings</div>
+
+                <div class="menu-item">
+                    <span class="menu-item-name">Premium Boneless Breast</span>
+                    <span class="menu-item-dots"></span>
+                    <span class="menu-item-price">$7.00</span>
+                </div>
+                <div class="menu-item-detail">Skinless, perfectly filleted breast meat per KG</div>
+            </div>
+            
+        </div>
+
+        <!-- Bulk Discounts Alert Box -->
+        <div class="bulk-banner">
+            <h4>Looking for wholesale supply or resale batches?</h4>
+            <p>We offer discounted per-head rates and scheduled deliveries for restaurants, boarding schools, and independent poultry retailers ordering 50+ birds at a time. Contact us directly for a custom wholesale quote.</p>
+        </div>
+    </section>
+
+    <!-- Fulfillment Footer -->
+    <footer id="contact">
+        <h2>Place Your Order Today</h2>
+        <p>Get in touch to confirm current daily availability or schedule a farm gate collection.</p>
+        
+        <div class="footer-details">
+            <!-- Updated Live Contact Info in Footer -->
+            <p><strong>📞 Call / WhatsApp:</strong> <span>+263 77 887 1692</span></p>
+            <p><strong>📍 Supply Depot:</strong> <span>Bulawayo, Zimbabwe</span></p>
+            <p><strong>⏰ Collection Times:</strong> <span>Mon - Sat: 7:30 AM - 4:30 PM</span></p>
+        </div>
+    </footer>
+
+    <!-- Chatbot Widget UI Section -->
+    <div class="chat-widget-container">
+        
+        <!-- Chat Window Panel -->
+        <div class="chat-window" id="personalChatWindow">
+            <div class="chat-header">
+                <div class="chat-header-title">🐣 Ambitious Assistant</div>
+                <button class="chat-close-btn" onclick="toggleChatWindow()">×</button>
+            </div>
+            <div class="chat-body" id="chatMsgArea">
+                <div class="msg bot">Hello! Welcome to Ambitious Chickens. How can I help you with your order today?</div>
+            </div>
+            <div class="chat-options-box">
+                <button class="opt-btn" onclick="handleBotQuery('pricing')">💰 Current prices?</button>
+                <button class="opt-btn" onclick="handleBotQuery('bulk')">📦 Wholesale discounts?</button>
+                <button class="opt-btn" onclick="handleBotQuery('order')">🔴 Place an order via WhatsApp</button>
+            </div>
+        </div>
+
+        <!-- Floating Action Launchers -->
+        <button class="widget-trigger trigger-chat" id="openChatBtn" onclick="toggleChatWindow()">💬 Ask Assistant</button>
+        <!-- Updated Floating Quick-Link Launcher Link -->
+        <a href="https://wa.me/263778871692?text=Hi!%20I%20visited%20the%20Ambitious%20Chickens%20website%20and%20want%20to%20place%20an%20order." class="widget-trigger trigger-wa" target="_blank">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="display:inline; margin-right:4px; vertical-align:text-bottom;">
+                <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.69-4.98c-.202-.101-1.194-.588-1.378-.653-.184-.066-.317-.099-.45.099-.132.199-.512.653-.628.788-.117.136-.232.151-.434.05-1.207-.604-1.922-1.004-2.674-2.298-.198-.34-.198-.588-.099-.688.088-.088.199-.232.299-.348.1-.117.133-.199.199-.332.066-.133.033-.25-.017-.35-.05-.101-.45-1.086-.617-1.488-.162-.395-.327-.341-.45-.347-.117-.006-.251-.007-.386-.007-.135 0-.354.05-.539.25-.185.2-.705.688-.705 1.681 0 1.003.729 1.974.831 2.108.102.135 1.433 2.187 3.473 3.064.485.208.863.332 1.159.426.488.155.931.133 1.282.08.39-.059 1.194-.488 1.365-.957.172-.469.172-.87.121-.957-.05-.088-.184-.138-.386-.239z"/>
+            </svg>
+            WhatsApp
+        </a>
+    </div>
+
+    <!-- Script Logic Engine -->
+    <script>
+        function toggleChatWindow() {
+            const chatWin = document.getElementById('personalChatWindow');
+            const openBtn = document.getElementById('openChatBtn');
+            
+            if(chatWin.style.display === 'flex') {
+                chatWin.style.display = 'none';
+                openBtn.style.display = 'block';
+            } else {
+                chatWin.style.display = 'flex';
+                openBtn.style.display = 'none';
+            }
+        }
+
+        function handleBotQuery(type) {
+            const msgArea = document.getElementById('chatMsgArea');
+            let userText = "";
+            let botText = "";
+
+            if(type === 'pricing') {
+                userText = "What are the current prices?";
+                botText = "Our live mature broilers are $6.50 and point-of-lay hens are $9.00. For dressed chicken, our whole birds are $5.00/KG and premium boneless breast is $7.00/KG.";
+            } else if(type === 'bulk') {
+                userText = "Do you offer bulk wholesale discounts?";
+                botText = "Yes, we do! For independent resellers, schools, and catering businesses ordering 50+ birds at a time, we offer massive per-head discounts. Click the WhatsApp option to get a custom quote!";
+            } else if(type === 'order') {
+                userText = "I want to place an order";
+                // Updated JavaScript Target Link for Interactive Chat Routing
+                botText = "Perfect choice! The fastest way to order is on WhatsApp: <br><br><a href='https://wa.me/263778871692?text=Hi!%20I%20want%20to%20place%20an%20order%20with%20Ambitious%20Chickens.' target='_blank' style='color:#e53e3e; font-weight:bold;'>👉 Launch WhatsApp Chat</a>";
+            }
+
+            const userMsgElement = document.createElement('div');
+            userMsgElement.className = 'msg user';
+            userMsgElement.innerHTML = userText;
+            msgArea.appendChild(userMsgElement);
+            msgArea.scrollTop = msgArea.scrollHeight;
+
+            setTimeout(() => {
+                const botMsgElement = document.createElement('div');
+                botMsgElement.className = 'msg bot';
+                botMsgElement.innerHTML = botText;
+                msgArea.appendChild(botMsgElement);
+                msgArea.scrollTop = msgArea.scrollHeight;
+            }, 400);
+        }
+    </script>
+
+</body>
+</html>
